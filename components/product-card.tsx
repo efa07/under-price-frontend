@@ -1,0 +1,87 @@
+'use client'
+
+import Image from 'next/image'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { ShoppingCart, Eye } from 'lucide-react'
+
+export interface ProductCardProps {
+  id: string
+  title: string
+  price: number
+  originalPrice?: number
+  image: string
+  category?: string
+  badge?: string
+}
+
+export function ProductCard({ id, title, price, originalPrice, image, badge }: ProductCardProps) {
+  const discountPercent = originalPrice
+    ? Math.round(((originalPrice - price) / originalPrice) * 100)
+    : 0
+
+  return (
+    <Card className="group relative bg-card border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      {/* Image Container */}
+      <div className="relative h-48 overflow-hidden bg-muted">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover group-hover:scale-110 transition-transform duration-300"
+        />
+
+        {/* Badge */}
+        {badge && (
+          <Badge className="absolute top-3 left-3 bg-accent text-foreground border-none">
+            {badge}
+          </Badge>
+        )}
+
+        {/* Discount Badge */}
+        {discountPercent > 0 && (
+          <Badge className="absolute top-3 right-3 bg-primary text-white border-none font-bold">
+            -{discountPercent}%
+          </Badge>
+        )}
+
+        {/* Quick View Overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+          <Button
+            size="sm"
+            className="bg-white hover:bg-white/90 text-foreground gap-2"
+          >
+            <Eye className="w-4 h-4" />
+            <span className="hidden sm:inline">Quick View</span>
+          </Button>
+          <Button
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-white gap-2"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span className="hidden sm:inline">Add</span>
+          </Button>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-4">
+        <p className="text-sm text-muted-foreground mb-2 capitalize">{id}</p>
+        <h3 className="font-bold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+          {title}
+        </h3>
+
+        {/* Price */}
+        <div className="flex items-center gap-3">
+          <span className="text-xl font-bold text-primary">${price.toFixed(2)}</span>
+          {originalPrice && (
+            <span className="text-sm text-muted-foreground line-through">
+              ${originalPrice.toFixed(2)}
+            </span>
+          )}
+        </div>
+      </div>
+    </Card>
+  )
+}
