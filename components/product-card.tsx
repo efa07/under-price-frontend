@@ -58,8 +58,8 @@ export function ProductCard({
           </Badge>
         )}
 
-        {/* Quick View Overlay */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+        {/* Quick View Overlay (desktop only) */}
+        <div className="absolute inset-0 hidden bg-black/40 opacity-0 transition-opacity duration-300 md:flex items-center justify-center gap-4 group-hover:opacity-100">
           <Button
             size="sm"
             className="bg-white hover:bg-white/90 text-foreground gap-2"
@@ -94,6 +94,16 @@ export function ProductCard({
             </span>
           )}
         </div>
+
+        {/* Mobile Add to Cart */}
+        <Button
+          size="sm"
+          className="mt-4 w-full bg-primary hover:bg-primary/90 text-white gap-2 md:hidden"
+          onClick={onAddToCart}
+        >
+          <ShoppingCart className="w-4 h-4" />
+          <span>{addButtonLabel}</span>
+        </Button>
       </div>
     </Card>
   )

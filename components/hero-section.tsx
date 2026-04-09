@@ -34,7 +34,7 @@ export function HeroSection() {
               size="lg"
               className="h-12 rounded-xl px-8 text-base font-semibold shadow-[0_16px_45px_-20px_hsl(var(--primary)/0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_45px_-18px_hsl(var(--primary)/0.85)]"
             >
-              Shop Now
+              <Link href="/products">Shop Now</Link>
             </Button>
             <Button
               size="lg"
