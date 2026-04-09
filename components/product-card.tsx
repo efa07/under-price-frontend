@@ -14,9 +14,21 @@ export interface ProductCardProps {
   image: string
   category?: string
   badge?: string
+  onAddToCart?: () => void
+  addButtonLabel?: string
 }
 
-export function ProductCard({ id, title, price, originalPrice, image, badge }: ProductCardProps) {
+export function ProductCard({
+  id,
+  title,
+  price,
+  originalPrice,
+  image,
+  category,
+  badge,
+  onAddToCart,
+  addButtonLabel = 'Add',
+}: ProductCardProps) {
   const discountPercent = originalPrice
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0
@@ -58,16 +70,17 @@ export function ProductCard({ id, title, price, originalPrice, image, badge }: P
           <Button
             size="sm"
             className="bg-primary hover:bg-primary/90 text-white gap-2"
+            onClick={onAddToCart}
           >
             <ShoppingCart className="w-4 h-4" />
-            <span className="hidden sm:inline">Add</span>
+            <span className="hidden sm:inline">{addButtonLabel}</span>
           </Button>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-4">
-        <p className="text-sm text-muted-foreground mb-2 capitalize">{id}</p>
+        <p className="text-sm text-muted-foreground mb-2 capitalize">{category ?? id}</p>
         <h3 className="font-bold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
           {title}
         </h3>

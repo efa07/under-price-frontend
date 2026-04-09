@@ -1,68 +1,9 @@
 'use client'
 
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ProductCard } from './product-card'
-
-const products = [
-  {
-    id: 'snacks',
-    title: 'Cheese & Cracker Snack Pack',
-    price: 4.99,
-    originalPrice: 6.99,
-    image: '/product-snacks.jpg',
-    badge: 'Sale',
-  },
-  {
-    id: 'drinks',
-    title: 'Premium Cold Brew Coffee',
-    price: 5.49,
-    image: '/product-coffee.jpg',
-  },
-  {
-    id: 'drinks',
-    title: 'Organic Juice Selection',
-    price: 3.99,
-    originalPrice: 5.49,
-    image: '/product-juice.jpg',
-    badge: 'New',
-  },
-  {
-    id: 'household',
-    title: 'Eco-Friendly Cleaning Supplies',
-    price: 7.99,
-    image: '/product-cleaning.jpg',
-  },
-  {
-    id: 'snacks',
-    title: 'Handcrafted Granola Bars',
-    price: 6.49,
-    originalPrice: 7.99,
-    image: '/product-granola.jpg',
-  },
-  {
-    id: 'organic',
-    title: 'Organic Whole Grain Bread',
-    price: 5.99,
-    image: '/product-bread.jpg',
-    badge: 'Organic',
-  },
-
-  {
-    id: 'snacks',
-    title: 'Mixed Nuts & Dried Fruits',
-    price: 8.99,
-    image: '/product-nuts.jpg',
-    badge: 'Popular',
-  },
-  {
-    id: 'vape',
-    title: 'Disposable Vape - Cool Mint',
-    price: 14.99,
-    originalPrice: 17.99,
-    image: '/product-vape.png',
-    badge: 'Hot',
-  },
-]
+import { products } from '@/lib/products'
 
 export function FeaturedProductsSection() {
   return (
@@ -77,8 +18,8 @@ export function FeaturedProductsSection() {
               Discover our best-selling items and exclusive deals available this week.
             </p>
           </div>
-          <Button className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-lg px-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-            View All Products
+          <Button asChild className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-lg px-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+            <Link href="/products">View All Products</Link>
           </Button>
         </div>
 
@@ -91,7 +32,7 @@ export function FeaturedProductsSection() {
               style={{ animationDelay: `${index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}
             >
               <ProductCard
-                id={product.id}
+                id={product.category}
                 title={product.title}
                 price={product.price}
                 originalPrice={product.originalPrice}
@@ -103,8 +44,8 @@ export function FeaturedProductsSection() {
         </div>
 
         {/* Mobile View All Button */}
-        <Button className="w-full sm:hidden bg-primary hover:bg-primary/90 text-white rounded-lg py-6">
-          View All Products
+        <Button asChild className="w-full sm:hidden bg-primary hover:bg-primary/90 text-white rounded-lg py-6">
+          <Link href="/products">View All Products</Link>
         </Button>
       </div>
     </section>
