@@ -46,19 +46,21 @@ const products = [
     image: '/product-bread.jpg',
     badge: 'Organic',
   },
-  {
-    id: 'drinks',
-    title: 'Artisan Sparkling Water',
-    price: 4.49,
-    originalPrice: 5.99,
-    image: '/product-water.jpg',
-  },
+
   {
     id: 'snacks',
     title: 'Mixed Nuts & Dried Fruits',
     price: 8.99,
     image: '/product-nuts.jpg',
     badge: 'Popular',
+  },
+  {
+    id: 'vape',
+    title: 'Disposable Vape - Cool Mint',
+    price: 14.99,
+    originalPrice: 17.99,
+    image: '/product-vape.png',
+    badge: 'Hot',
   },
 ]
 

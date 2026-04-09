@@ -25,15 +25,18 @@ export function Navbar() {
           <div className="flex-1">
             <Link href="/" className="group flex items-center gap-3">
               <Image
-                src="/logo.jpeg"
+                src="/logo.png"
                 alt="Under Price Logo"
                 width={48}
                 height={48}
-                className="h-11 w-11 rounded-xl object-cover ring-1 ring-border/70 transition-transform duration-300 group-hover:scale-[1.03]"
+                className="h-11 w-11 rounded-full object-cover ring-1 ring-border/70 bg-white transition-transform duration-300 group-hover:scale-[1.03]"
                 priority
+               
               />
               <div className="hidden sm:block">
-                <p className="text-base font-semibold leading-none tracking-tight text-foreground">Under Price</p>
+                <p className="font-mono text-sm font-medium uppercase leading-none tracking-[0.2em] text-foreground/90">
+                  Under <span className="text-primary">Price</span>
+                </p>
               </div>
             </Link>
           </div>

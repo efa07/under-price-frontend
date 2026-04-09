@@ -38,7 +38,7 @@ export function CategoriesSection() {
                 src={category.image}
                 alt={category.name}
                 fill
-                className="object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500"
+                className="object-cover opacity-100 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500"
               />
 
               {/* Gradient Overlay */}

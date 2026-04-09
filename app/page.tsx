@@ -7,18 +7,33 @@ import { ServicesSection } from '@/components/services-section'
 import { AboutSection } from '@/components/about-section'
 import { LocationSection } from '@/components/location-section'
 import { Footer } from '@/components/footer'
+import { SectionTransition } from '@/components/section-transition'
 
 export default function Home() {
   return (
     <main className="w-full">
       <Navbar />
-      <HeroSection />
-      <CategoriesSection />
-      <FeaturedProductsSection />
-      <PromotionalBanner />
-      <ServicesSection />
-      <AboutSection />
-      <LocationSection />
+      <SectionTransition delay={0.02}>
+        <HeroSection />
+      </SectionTransition>
+      <SectionTransition delay={0.06}>
+        <CategoriesSection />
+      </SectionTransition>
+      <SectionTransition delay={0.1}>
+        <FeaturedProductsSection />
+      </SectionTransition>
+      <SectionTransition delay={0.14}>
+        <PromotionalBanner />
+      </SectionTransition>
+      <SectionTransition delay={0.18}>
+        <ServicesSection />
+      </SectionTransition>
+      <SectionTransition delay={0.22}>
+        <AboutSection />
+      </SectionTransition>
+      <SectionTransition delay={0.26}>
+        <LocationSection />
+      </SectionTransition>
       <Footer />
     </main>
   )

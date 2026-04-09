@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { BadgeCheck, Clock3, Sparkles, Store } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -38,9 +39,10 @@ export function HeroSection() {
             <Button
               size="lg"
               variant="outline"
+              asChild
               className="h-12 rounded-xl border-border/70 bg-background/75 px-8 text-base font-semibold shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/45 hover:bg-background hover:text-primary"
             >
-              Visit Store
+              <Link href="#contact">Visit Store</Link>
             </Button>
           </div>
 

@@ -37,7 +37,7 @@ export function Footer() {
           <div className="col-span-full md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4 rounded-full">
               <Image
-                src="/logo.jpeg"
+                src="/logo.png"
                 alt="Under Price Logo"
                 width={48}
                 height={48}
