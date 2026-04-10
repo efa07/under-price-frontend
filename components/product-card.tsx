@@ -36,7 +36,7 @@ export function ProductCard({
   return (
     <Card className="group relative bg-card border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
       {/* Image Container */}
-      <div className="relative h-48 overflow-hidden bg-muted">
+      <div className="relative aspect-square sm:aspect-auto sm:h-48 overflow-hidden bg-muted">
         <Image
           src={image}
           alt={title}

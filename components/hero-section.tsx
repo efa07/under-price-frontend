@@ -4,16 +4,16 @@ import Image from 'next/image'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-144px)] md:min-h-[calc(100vh-156px)] w-full overflow-hidden border-b border-border/20">
-      <div className="grid lg:grid-cols-2 min-h-[calc(100vh-144px)] md:min-h-[calc(100vh-156px)]">
+    <section className="relative w-full overflow-hidden border-b border-border/20 bg-background">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 lg:min-h-[calc(100vh-156px)]">
 
         {/* LEFT CONTENT */}
-        <div className="flex items-center px-6 sm:px-10 lg:px-20 py-20">
-          <div className="max-w-2xl space-y-10  animate-fade-in-left">
+        <div className="flex items-center px-6 sm:px-10 lg:px-20 py-12 lg:py-20 bg-background">
+          <div className="max-w-2xl space-y-8 lg:space-y-10 animate-fade-in-left w-full">
 
             {/* Main Heading */}
-            <div className="space-y-6">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.95] text-foreground">
+            <div className="space-y-4 lg:space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight leading-[1] lg:leading-[0.95] text-foreground">
                 Fresh Food.
                 <br />
                 Delivered
@@ -27,7 +27,7 @@ export function HeroSection() {
             </div>
 
             {/* Bottom Stats */}
-            <div className="flex gap-10 pt-4">
+            <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-10 pt-4">
               <div>
                 <h3 className="text-2xl font-semibold">30min</h3>
                 <p className="text-sm text-muted-foreground">Avg Delivery</p>
@@ -47,7 +47,7 @@ export function HeroSection() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative min-h-[500px] overflow-hidden">
+        <div className="relative h-[300px] sm:h-[400px] lg:h-auto lg:min-h-[500px] bg-muted/20 overflow-hidden">
           <Image
             src="/store-image-2.png"
             alt="Premium fresh groceries"
@@ -55,12 +55,6 @@ export function HeroSection() {
             loading="eager"
             className="object-cover transition-transform duration-[2500ms]"
           />
-
-          {/* Elegant Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-black/10 to-transparent" />
-
-          {/* Floating Blur Accent */}
-          <div className="absolute bottom-10 left-10 h-40 w-40 rounded-full bg-primary/30 blur-3xl" />
         </div>
       </div>
     </section>

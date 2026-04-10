@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative w-full overflow-hidden border-y border-border/40">
+    <section id="about" className="relative w-full overflow-hidden border-y border-border/40 bg-background">
       <div className="grid md:grid-cols-2 min-h-[500px]">
         {/* Left Side - Full Image */}
-        <div className="relative min-h-[400px] md:min-h-full animate-fade-in-left group overflow-hidden">
+        <div className="relative h-[250px] sm:h-[400px] md:h-auto md:min-h-full animate-fade-in-left group overflow-hidden">
           <Image
             src="/store-image-1.png"
             alt="Fresh Local Grocery Store"
@@ -18,8 +18,8 @@ export function AboutSection() {
         </div>
 
         {/* Right Side - Content */}
-        <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-16 animate-fade-in-right">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
+        <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-12 md:py-16 animate-fade-in-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 tracking-tight">
             Fresh Neighborhood <br />
             <span className="text-primary">Groceries.</span>
           </h2>
