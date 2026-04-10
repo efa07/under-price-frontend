@@ -1,34 +1,33 @@
 'use client'
 
-import Image from 'next/image'
-import { Accessibility } from 'lucide-react'
+import { Truck, ShoppingBag, ShieldCheck, CreditCard, Accessibility } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 
 const services = [
   {
-    image: '/service-lottery.png',
-    title: 'Lottery',
-    description: 'Official lottery tickets and instant wins',
+    icon: Truck,
+    title: 'Same-Day Delivery',
+    description: 'Fresh groceries delivered straight to your door in as little as 2 hours.',
   },
   {
-    image: '/service-atm.png',
-    title: 'ATM',
-    description: 'Fast and secure ATM services',
+    icon: ShoppingBag,
+    title: 'Curbside Pickup',
+    description: 'Order online and we will bring your groceries directly to your car.',
   },
   {
-    image: '/service-beer.png',
-    title: 'Beer & Wine',
-    description: 'Premium selection of beverages',
+    icon: ShieldCheck,
+    title: 'Freshness Guarantee',
+    description: 'If you are not satisfied with the freshness, we will refund you 100%.',
   },
   {
-    image: '/service-organic.png',
-    title: 'Organic Products',
-    description: 'Certified organic and natural options',
+    icon: CreditCard,
+    title: 'Digital Coupons',
+    description: 'Save automatically at checkout with our weekly digital specials.',
   },
   {
     icon: Accessibility,
     title: 'Accessibility Support',
-    description: 'Fully accessible for all customers',
+    description: 'Our stores and website are fully accessible for all customers.',
   },
 ]
 
@@ -36,50 +35,34 @@ export function ServicesSection() {
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Services
+        <div className="text-center p-4 bg-primary/90 w-full mb-16 animate-fade-in-up">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4 drop-shadow-md">
+            Shopping Made Easy
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            More than just a convenience store - we offer a full range of services to meet your needs.
+          <p className="text-white text-lg max-w-2xl mx-auto font-medium">
+            We provide a variety of convenient services to ensure your grocery shopping is as smooth and fast as possible.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {services.map((service, index) => {
-            const isImageService = 'image' in service
-            const Icon = !isImageService ? service.icon : null
+            const Icon = service.icon
             
             return (
               <Card
                 key={index}
-                className="overflow-hidden hover:shadow-xl hover:border-primary transition-all duration-500 group bg-card border-border rounded-2xl flex flex-col h-full hover:-translate-y-2 animate-scale-in"
+                className="overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300 group bg-card border-border/60 rounded-3xl flex flex-col items-center text-center p-8 hover:-translate-y-2 animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}
               >
-                {isImageService ? (
-                  <div className="relative w-full h-56 flex items-center justify-center bg-gradient-to-br from-muted to-muted/50 overflow-hidden flex-shrink-0">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                ) : (
-                  <div className="p-8 flex justify-center items-center bg-gradient-to-br from-primary to-primary/80 flex-shrink-0 h-56">
-                    {Icon && <Icon className="w-16 h-16 text-primary-foreground" />}
-                  </div>
-                )}
-                <div className="p-6 text-center flex flex-col flex-grow justify-between">
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
+                <div className="w-16 h-16 rounded-full  flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                  <Icon className="w-8 h-8 transition-colors" />
                 </div>
+                <h3 className="text-lg font-bold text-foreground mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed font-medium">
+                  {service.description}
+                </p>
               </Card>
             )
           })}

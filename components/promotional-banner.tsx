@@ -2,42 +2,41 @@
 
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { Mail } from 'lucide-react'
 
 export function PromotionalBanner() {
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
+    <section className="py-16 md:py-24 bg-muted/20 border-y border-border/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary/20 to-accent/20 border border-border animate-scale-in hover:shadow-2xl transition-shadow duration-500">
-          {/* Background Image */}
-          <Image
-            src="/placeholder.jpg"
-            alt="Weekly deals"
-            fill
-            className="object-cover opacity-30"
-          />
-
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
-
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-tr from-green-700 to-green-600 animate-scale-in shadow-xl">
+          {/* Background Image / Decoration */}
+          <div className="absolute inset-0 bg-[url('/store-image.jpeg')] opacity-10 bg-cover bg-center mix-blend-overlay" />
+          
           {/* Content */}
-          <div className="relative p-8 md:p-16 flex flex-col justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 max-w-lg animate-fade-in-left">
-              Weekly Deals & Fresh Arrivals
+          <div className="relative p-10 md:p-16 flex flex-col justify-center items-center text-center">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-4 py-1.5 text-sm font-bold text-white shadow-sm mb-6 animate-fade-in-up">
+              <Mail className="h-4 w-4" />
+              <span>Newsletter Exclusive</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 max-w-2xl animate-fade-in-up animation-delay-100">
+              Get $15 Off Your First Online Grocery Order
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-md animate-fade-in-left animation-delay-100">
-              Discover new products arriving every week with special promotional pricing.
+            <p className="text-lg md:text-xl text-green-50 mb-10 max-w-xl animate-fade-in-up animation-delay-200 font-medium">
+              Sign up for our weekly flyer to receive exclusive fresh produce discounts, digital coupons, and new arrival alerts.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-left animation-delay-200">
-              <Button className="bg-primary hover:bg-primary/90 text-white rounded-lg px-8 py-6 text-base font-semibold w-fit hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                View All Deals
-              </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary/10 rounded-lg px-8 py-6 text-base font-semibold w-fit hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-              >
-                Subscribe to Updates
+            
+            <div className="flex flex-col sm:flex-row w-full max-w-md gap-3 animate-fade-in-up animation-delay-300">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="flex-1 w-full rounded-full px-6 py-4 text-base bg-white text-foreground shadow-inner focus:outline-none focus:ring-4 focus:ring-primary/40 transition-shadow"
+              />
+              <Button className="bg-primary hover:bg-primary/95 text-primary-foreground font-bold rounded-full px-8 py-6 sm:h-auto shadow-lg hover:-translate-y-1 transition-transform w-full sm:w-auto">
+                Sign Up
               </Button>
             </div>
+            <p className="text-green-200/80 text-xs mt-4 animate-fade-in-up animation-delay-300">By signing up, you agree to our terms and conditions.</p>
           </div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import { Navbar } from '@/components/navbar'
 import { HeroSection } from '@/components/hero-section'
 import { CategoriesSection } from '@/components/categories-section'
 import { FeaturedProductsSection } from '@/components/featured-products-section'
-import { PromotionalBanner } from '@/components/promotional-banner'
 import { ServicesSection } from '@/components/services-section'
 import { AboutSection } from '@/components/about-section'
 import { LocationSection } from '@/components/location-section'
@@ -21,9 +20,6 @@ export default function Home() {
       </SectionTransition>
       <SectionTransition delay={0.1}>
         <FeaturedProductsSection />
-      </SectionTransition>
-      <SectionTransition delay={0.14}>
-        <PromotionalBanner />
       </SectionTransition>
       <SectionTransition delay={0.18}>
         <ServicesSection />

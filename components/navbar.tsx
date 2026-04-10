@@ -3,111 +3,249 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, PhoneCall, X } from 'lucide-react'
+import { Menu, X, Search, ShoppingCart, User, MapPin, ChevronDown, Store } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Shop', href: '/products' },
-    { label: 'Categories', href: '/#categories' },
-    { label: 'About', href: '/#about' },
-    { label: 'Contact', href: '/#contact' },
+  const partnerLinks = [
+    { label: 'FreshMart', href: '#' },
+    { label: 'OrganicsDirect', href: '#' },
+    { label: 'DailyNeeds', href: '#' },
+  ]
+
+  const categories = [
+    { label: 'Fruits & Veggies', href: '/products?category=produce' },
+    { label: 'Meat & Seafood', href: '/products?category=meat' },
+    { label: 'Dairy & Eggs', href: '/products?category=dairy' },
+    { label: 'Bakery', href: '/products?category=bakery' },
+    { label: 'Pantry', href: '/products?category=pantry' },
+    { label: 'Beverages', href: '/products?category=beverages' },
+    { label: 'Snacks', href: '/products?category=snacks' },
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur-xl">
+    <header className="w-full bg-background border-b border-border z-50 sticky top-0 shadow-sm">
+      {/* Top Banner - Partner Links */}
+      <div className="hidden md:flex bg-accent/40 text-muted-foreground py-1.5 px-4 sm:px-6 lg:px-8 text-xs font-medium justify-between items-center border-b border-border/50">
+        <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <Store className="w-3.5 h-3.5" />
+            Our Partner Stores:
+          </span>
+          <div className="flex items-center gap-3">
+            {partnerLinks.map((link, idx) => (
+              <div key={link.label} className="flex items-center gap-3">
+                <Link href={link.href} className="hover:text-primary transition-colors">
+                  {link.label}
+                </Link>
+                {idx < partnerLinks.length - 1 && <span className="opacity-40">|</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <Link href="#" className="flex items-center gap-1 hover:text-primary transition-colors">
+            <MapPin className="w-3.5 h-3.5" />
+            Find a Store
+          </Link>
+          <span className="opacity-40">|</span>
+          <Link href="#" className="hover:text-primary transition-colors">Customer Service</Link>
+        </div>
+      </div>
+
+      {/* Main Navbar */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center">
-          {/* Logo */}
-          <div className="flex-1">
+        <div className="flex items-center justify-between gap-4 h-16 md:h-20">
+
+          {/* Mobile Menu Button & Mobile Logo */}
+          <div className="flex items-center md:hidden gap-3">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-1 -ml-1 text-foreground transition-colors hover:text-primary rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            <Link href="/" className="flex items-center gap-2">
+              <Image src="/logo.png" alt="Under Price" width={32} height={32} className="w-8 h-8 rounded-full ring-1 ring-border/70 bg-white" />
+            </Link>
+          </div>
+
+          {/* Desktop Logo */}
+          <div className="hidden md:flex shrink-0">
             <Link href="/" className="group flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="Under Price Logo"
                 width={48}
                 height={48}
-                className="h-11 w-11 rounded-full object-cover ring-1 ring-border/70 bg-white transition-transform duration-300 group-hover:scale-[1.03]"
+                className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover ring-1 ring-border/70 bg-white shadow-sm transition-transform duration-300 group-hover:scale-105"
                 priority
-               
               />
-              <div className="hidden sm:block">
-                <p className="font-mono text-sm font-medium uppercase leading-none tracking-[0.2em] text-foreground/90">
-                  Under <span className="text-primary">Price</span>
+              <div>
+                <p className="font-mono text-base md:text-lg font-bold uppercase leading-none tracking-widest text-foreground group-hover:text-primary transition-colors">
+                  Under <br className="hidden lg:block" /> <span className="text-primary lg:text-foreground group-hover:text-primary">Price</span>
                 </p>
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden flex-1 justify-center md:flex">
-            <div className="flex items-center gap-1 rounded-full border border-border/60 bg-muted/30 p-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="rounded-full px-4 py-2 text-sm font-medium tracking-tight text-foreground/85 transition-all duration-300 hover:bg-background hover:text-primary"
-                >
-                  {link.label}
-                </Link>
-              ))}
+          {/* Search Bar - Hidden on mobile, full width on desktop */}
+          <div className="hidden md:flex flex-1 max-w-2xl px-4 lg:px-8">
+            <div className="relative w-full group">
+              <Input
+                type="search"
+                placeholder="Search for groceries, brands, and more..."
+                className="w-full pl-11 pr-24 h-11 rounded-full  border-muted-foreground/30 text-base shadow-sm transition-all"
+              />
+              <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors" />
+              <Button size="sm" className="absolute right-1.5 top-1.5 bottom-1.5 h-auto rounded-full px-5 bg-primary hover:bg-primary/100 text-primary-foreground font-medium hidden lg:flex shadow-sm">
+                Search
+              </Button>
             </div>
           </div>
 
-          {/* Desktop Call Button */}
-          <div className="hidden flex-1 justify-end md:flex">
-            <Button
-              asChild
-              size="sm"
-              className="h-10 rounded-full px-5 font-semibold tracking-tight shadow-[0_14px_30px_-18px_hsl(var(--primary)/0.95)] transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <a href="tel:+14165036121" aria-label="Call Under Price at +1 416 503 6121">
-                <PhoneCall className="mr-2 h-4 w-4" />
-                Call Us
-              </a>
+          {/* Action Icons */}
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0 overflow-hidden">
+            <Button variant="ghost" size="icon" className="md:hidden relative hover:bg-transparent" aria-label="Search">
+              <Search className="w-5 h-5 sm:w-6 sm:h-6" />
             </Button>
-          </div>
-
-          {/* Mobile Menu */}
-          <div className="ml-auto flex items-center md:hidden">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="rounded-lg p-2 text-foreground transition-colors hover:bg-muted/60 hover:text-primary md:hidden"
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            <Button variant="ghost" size="icon" className="hidden sm:flex rounded-full hover:bg-muted/60" aria-label="User Account">
+              <User className="w-5 h-5 sm:w-6 sm:h-6" />
+            </Button>
+            <div className="flex items-center">
+              <Button variant="ghost" className="relative p-2 sm:p-3 h-auto rounded-full hover:bg-primary/5 hover:text-primary group transition-colors">
+                <div className="relative">
+                  <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-primary text-primary-foreground text-[10px] font-bold h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform shadow-sm">
+                    3
+                  </span>
+                </div>
+                <span className="hidden lg:flex flex-col items-start ml-3 text-left">
+                  <span className="text-[10px] text-muted-foreground leading-none font-medium mb-1 group-hover:text-primary/70 transition-colors">Total</span>
+                  <span className="text-sm font-bold leading-none">$45.90</span>
+                </span>
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="space-y-2 border-t border-border/60 py-4 md:hidden">
-            {navLinks.map((link) => (
+        {/* Mobile Search Bar */}
+        <div className="md:hidden pb-4">
+          <div className="relative w-full group">
+            <Input
+              type="search"
+              placeholder="Search groceries..."
+              className="w-full pl-10 pr-4 h-11 rounded-xl bg-muted/40 border-muted-foreground/30 focus-visible:ring-primary text-base shadow-sm"
+            />
+            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          </div>
+        </div>
+
+        {/* Categories Bar - Desktop Only */}
+        <div className="hidden md:flex items-center gap-1 pb-3 overflow-x-auto no-scrollbar mask-gradient">
+          <Button variant="default" size="sm" className="rounded-full gap-2 shrink-0 h-9 px-4 font-semibold shadow-sm hover:shadow-md transition-all">
+            <Menu className="w-4 h-4" />
+            All Departments
+          </Button>
+          <div className="w-px h-5 bg-border mx-2 shrink-0" />
+          {categories.map((cat) => (
+            <Link
+              key={cat.label}
+              href={cat.href}
+              className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/60 rounded-full whitespace-nowrap transition-colors shrink-0"
+            >
+              {cat.label}
+            </Link>
+          ))}
+          <div className="ml-auto shrink-0 pl-4 flex items-center">
+            <Link href="/offers" className="text-sm font-bold text-red-500 hover:text-red-600 flex items-center gap-1.5 transition-colors px-3 py-1.5 rounded-full hover:bg-red-500/10">
+              Special Offers <ChevronDown className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Mobile Navigation Dropdown */}
+      {isOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-2xl z-50">
+          <div className="flex flex-col max-h-[calc(100vh-140px)] overflow-y-auto">
+            {/* Mobile Categories */}
+            <div className="px-4 py-4 border-b border-border/50 bg-muted/10">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 px-1">Departments</p>
+              <div className="grid grid-cols-2 gap-2">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.label}
+                    href={cat.href}
+                    className="text-sm font-medium p-2.5 rounded-xl hover:bg-muted/80 bg-background border border-border/50 transition-colors flex items-center justify-between shadow-sm"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {cat.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Partner Links */}
+            <div className="px-4 py-4 border-b border-border/50">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 px-1">Our Partners</p>
+              <div className="flex flex-col gap-1.5">
+                {partnerLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="text-sm font-medium p-3 rounded-xl hover:bg-muted/60 transition-colors flex items-center gap-3"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="bg-muted p-1.5 rounded-md">
+                      <Store className="w-4 h-4 text-foreground/70" />
+                    </div>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Footer Actions */}
+            <div className="p-4 flex flex-col gap-2 bg-muted/5">
               <Link
-                key={link.label}
-                href={link.href}
-                className="block rounded-xl px-4 py-2.5 text-sm font-medium tracking-tight text-foreground transition-colors hover:bg-muted hover:text-primary"
+                href="#"
+                className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted text-sm font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {link.label}
+                <div className="bg-muted p-1.5 rounded-md">
+                  <User className="w-5 h-5 text-foreground/70" />
+                </div>
+                My Account
               </Link>
-            ))}
-            <a
-              href="tel:+14165036121"
-              className="mt-1 flex items-center rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold tracking-tight text-primary-foreground transition-all duration-300 hover:opacity-95"
-              onClick={() => setIsOpen(false)}
-              aria-label="Call Under Price at +1 416 503 6121"
-            >
-              <PhoneCall className="mr-2 h-4 w-4" />
-              Call Us
-            </a>
+              <Link
+                href="#"
+                className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted text-sm font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <div className="bg-muted p-1.5 rounded-md">
+                  <MapPin className="w-5 h-5 text-foreground/70" />
+                </div>
+                Find a Store
+              </Link>
+              <Button
+                asChild
+                className="w-full mt-4 font-bold h-12 rounded-xl shadow-md bg-red-500 hover:bg-red-600 text-white"
+                size="lg"
+              >
+                <Link href="/offers" onClick={() => setIsOpen(false)}>
+                  View Special Offers
+                </Link>
+              </Button>
+            </div>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      )}
+    </header>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface SectionTransitionProps {
   children: ReactNode
@@ -9,12 +9,6 @@ interface SectionTransitionProps {
 }
 
 export function SectionTransition({ children, delay = 0 }: SectionTransitionProps) {
-  const reduceMotion = useReducedMotion()
-
-  if (reduceMotion) {
-    return <>{children}</>
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
