@@ -29,8 +29,8 @@ export function Navbar() {
   return (
     <header className="w-full bg-background border-b border-border z-50 sticky top-0 shadow-sm">
       {/* Top Banner - Partner Links */}
-      <div className="hidden md:flex bg-accent/40 text-muted-foreground py-1.5 px-4 sm:px-6 lg:px-8 text-xs font-medium justify-between items-center border-b border-border/50">
-        <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
+      <div className="hidden md:flex bg-accent/50 text-accent-foreground py-1.5 px-4 sm:px-6 lg:px-8 text-xs font-medium justify-between items-center border-b border-accent/20">
+        <div className="flex items-center gap-4 text-xs font-medium text-accent-foreground">
           <span className="flex items-center gap-1.5">
             <Store className="w-3.5 h-3.5" />
             Our Partner Stores:
@@ -87,7 +87,7 @@ export function Navbar() {
               />
               <div>
                 <p className="font-mono text-base md:text-lg font-bold uppercase leading-none tracking-widest text-foreground group-hover:text-primary transition-colors">
-                  Under <br className="hidden lg:block" /> <span className="text-primary lg:text-foreground group-hover:text-primary">Price</span>
+                  Under <br className="hidden lg:block text-accent" /> <span className="text-primary lg:text-foreground group-hover:text-primary">Price</span>
                 </p>
               </div>
             </Link>
@@ -120,7 +120,7 @@ export function Navbar() {
               <Button variant="ghost" className="relative p-2 sm:p-3 h-auto rounded-full hover:bg-primary/5 hover:text-primary group transition-colors">
                 <div className="relative">
                   <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-primary text-primary-foreground text-[10px] font-bold h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform shadow-sm">
+                  <span className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-primary text-primary-foreground text-[10px] font-bold h-2 w-2 sm:h-5 sm:w-5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform shadow-sm">
                     3
                   </span>
                 </div>

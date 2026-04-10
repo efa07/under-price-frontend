@@ -9,7 +9,7 @@ export function LocationSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-            Visit Your Local Store
+            Visit Our Store
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">
             Find the freshest produce and your favorite grocery essentials right in the heart of downtown Toronto.
@@ -36,8 +36,8 @@ export function LocationSection() {
             {/* Address */}
             <Card className="p-6 md:p-8 bg-card border-border/60 rounded-3xl hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 transition-all duration-300">
               <div className="flex gap-5">
-                <div className="bg-primary/10 p-3 rounded-2xl h-fit">
-                  <MapPin className="w-7 h-7 text-primary" strokeWidth={2} />
+                <div className=" p-3 rounded-2xl h-fit">
+                  <MapPin className="w-7 h-7 text-black" strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground text-lg mb-2 tracking-tight">Store Address</h3>
@@ -53,8 +53,8 @@ export function LocationSection() {
             {/* Hours */}
             <Card className="p-6 md:p-8 bg-card border-border/60 rounded-3xl hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 transition-all duration-300">
               <div className="flex gap-5">
-                <div className="bg-primary/10 p-3 rounded-2xl h-fit">
-                  <Clock className="w-7 h-7 text-primary" strokeWidth={2} />
+                <div className=" p-3 rounded-2xl h-fit">
+                  <Clock className="w-7 h-7 " strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground text-lg mb-2 tracking-tight">Store Hours</h3>
@@ -70,8 +70,8 @@ export function LocationSection() {
             {/* Phone */}
             <Card className="p-6 md:p-8 bg-card border-border/60 rounded-3xl hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 transition-all duration-300">
               <div className="flex gap-5">
-                <div className="bg-primary/10 p-3 rounded-2xl h-fit">
-                  <Phone className="w-7 h-7 text-primary" strokeWidth={2} />
+                <div className=" p-3 rounded-2xl h-fit">
+                  <Phone className="w-7 h-7 " strokeWidth={2} />
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground text-lg mb-2 tracking-tight">Contact Us</h3>

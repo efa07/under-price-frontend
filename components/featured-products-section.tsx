@@ -7,7 +7,7 @@ import { products } from '@/lib/products'
 
 export function FeaturedProductsSection() {
   return (
-    <section id="shop" className="py-16 md:py-24 bg-background">
+    <section id="shop" className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex items-end justify-between gap-8 animate-fade-in-up">
           <div>

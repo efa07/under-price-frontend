@@ -4,12 +4,12 @@ import Image from 'next/image'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-144px)] md:min-h-[calc(100vh-156px)] w-full overflow-hidden border-b border-border/20 bg-background">
+    <section className="relative min-h-[calc(100vh-144px)] md:min-h-[calc(100vh-156px)] w-full overflow-hidden border-b border-border/20">
       <div className="grid lg:grid-cols-2 min-h-[calc(100vh-144px)] md:min-h-[calc(100vh-156px)]">
 
         {/* LEFT CONTENT */}
         <div className="flex items-center px-6 sm:px-10 lg:px-20 py-20">
-          <div className="max-w-2xl space-y-10 animate-fade-in-left">
+          <div className="max-w-2xl space-y-10  animate-fade-in-left">
 
             {/* Main Heading */}
             <div className="space-y-6">
@@ -49,7 +49,7 @@ export function HeroSection() {
         {/* RIGHT IMAGE */}
         <div className="relative min-h-[500px] overflow-hidden">
           <Image
-            src="/store-image.jpeg"
+            src="/store-image-2.png"
             alt="Premium fresh groceries"
             fill
             loading="eager"

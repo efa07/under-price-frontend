@@ -10,7 +10,7 @@ export function CategoriesSection() {
   return (
     <section
       id="categories"
-      className="py-20 bg-background border-b border-border/30"
+      className="py-20 border-b border-border/30"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

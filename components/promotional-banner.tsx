@@ -6,7 +6,7 @@ import { Mail } from 'lucide-react'
 
 export function PromotionalBanner() {
   return (
-    <section className="py-16 md:py-24 bg-muted/20 border-y border-border/40">
+    <section className="py-16 md:py-24 border-y border-border/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-tr from-green-700 to-green-600 animate-scale-in shadow-xl">
           {/* Background Image / Decoration */}
